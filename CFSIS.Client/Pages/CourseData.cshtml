@@ -1,0 +1,110 @@
+﻿@page "/course/{action}/{paramCourseID}"
+@page "/course/{action}"
+@inherits CourseDataModel
+<h1>@title</h1>
+@if (action == "fetch")
+{
+    <p>
+        <a href="/course/create">Create New</a>
+    </p>
+}
+@if (action == "create" || action == "edit")
+{
+    <form>
+        <table class="form-group">
+            <tr>
+                <td>
+                    <label for="Name" class="control-label">Code</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" bind="@course.CourseCode" />
+                </td>
+                <td width="20">&nbsp;</td>
+                <td>
+                    <label for="Department" class="control-label">Course</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" bind="@course.CourseTitle" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Gender" class="control-label">Description</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" bind="@course.CourseDesc" />
+                </td>
+                <td width="20">&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" class="btn btn-success" onclick="@(async () => await CreateCourse())" style="width:220px;" value="Save" />
+                </td>
+                <td></td>
+                <td width="20">&nbsp;</td>
+                <td>
+                    <input type="submit" class="btn btn-danger" onclick="@Cancel" style="width:220px;" value="Cancel" />
+                </td>
+            </tr>
+        </table>
+    </form>
+}
+else if (action == "delete")
+{
+    <div class="col-md-4">
+        <table class="table">
+            <tr>
+                <td>Code</td>
+                <td>@course.CourseCode</td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>@course.CourseTitle</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@course.CourseDesc</td>
+            </tr>
+
+        </table>
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" onclick="@(async () => await DeleteCourse())" value="Delete" />
+            <input type="submit" value="Cancel" onclick="@Cancel" class="btn" />
+        </div>
+    </div>
+}
+@if (courseList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Course</th>
+                <th>Description</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in courseList)
+            {
+                <tr>
+                    <td>@course.CourseId</td>
+                    <td>@course.CourseCode</td>
+                    <td>@course.CourseTitle</td>
+                    <td>@course.CourseDesc</td>
+                    
+                    <td>
+                        <a href='/course/edit/@course.CourseId'>Edit</a>  |
+                        <a href='/course/delete/@course.CourseId'>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
