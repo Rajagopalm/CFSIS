@@ -1,0 +1,667 @@
+
+/*
+QuestionBox - QuestionBox.in
+*/
+
+
+GO
+/****** Object:  Table [dbo].[Countries]    Script Date: 3/16/2016 6:42:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Countries](
+	[CountryId] [int] IDENTITY(1,1) NOT NULL,
+	[CountryName] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_dbo.Countries] PRIMARY KEY CLUSTERED 
+(
+	[CountryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[States]    Script Date: 3/16/2016 6:42:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[States](
+	[StateId] [int] IDENTITY(1,1) NOT NULL,
+	[StateName] [nvarchar](max) NOT NULL,
+	[CountryId] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.States] PRIMARY KEY CLUSTERED 
+(
+	[StateId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET IDENTITY_INSERT [dbo].[Countries] ON 
+
+GO
+INSERT [dbo].[Countries] ([CountryId], [CountryName]) VALUES (1, N'India')
+GO
+SET IDENTITY_INSERT [dbo].[Countries] OFF
+GO
+SET IDENTITY_INSERT [dbo].[States] ON 
+
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (1, N'Andaman and Nicobar Island', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (2, N'Andhra Pradesh', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (3, N'Arunachal Pradesh', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (4, N'Assam', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (5, N'Bihar', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (6, N'Chandigarh', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (7, N'Chhattisgarh', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (8, N'Dadra and Nagar Haveli', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (9, N'Daman and Diu', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (10, N'Delhi', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (11, N'Goa', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (12, N'Gujarat', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (13, N'Haryana', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (14, N'Himachal Pradesh', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (15, N'Jammu and Kashmir', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (16, N'Jharkhand', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (17, N'Karnataka', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (18, N'Kerala', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (19, N'Lakshadweep', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (20, N'Madhya Pradesh', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (21, N'Maharashtra', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (22, N'Manipur', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (23, N'Meghalaya', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (24, N'Mizoram', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (25, N'Nagaland', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (26, N'Odisha', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (27, N'Puducherry', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (28, N'Punjab', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (29, N'Rajasthan', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (30, N'Sikkim', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (31, N'Tamil Nadu', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (32, N'Telangana', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (33, N'Tripura', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (34, N'Uttar Pradesh', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (35, N'Uttarakhand', 1)
+GO
+INSERT [dbo].[States] ([StateId], [StateName], [CountryId]) VALUES (36, N'West Bengal', 1)
+GO
+SET IDENTITY_INSERT [dbo].[States] OFF
+GO
+ALTER TABLE [dbo].[States]  WITH CHECK ADD  CONSTRAINT [FK_dbo.States_dbo.Countries_CountryId] FOREIGN KEY([CountryId])
+REFERENCES [dbo].[Countries] ([CountryId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[States] CHECK CONSTRAINT [FK_dbo.States_dbo.Countries_CountryId]
+GO
+
+/****** Object:  Table [dbo].[Districts]    Script Date: 3/16/2016 6:43:27 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Districts](
+	[DistrictId] [int] IDENTITY(1,1) NOT NULL,
+	[DistrictName] [nvarchar](max) NULL,
+	[StateId] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.Districts] PRIMARY KEY CLUSTERED 
+(
+	[DistrictId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SubDistricts]    Script Date: 3/16/2016 6:43:27 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SubDistricts](
+	[SubDistrictsId] [int] IDENTITY(1,1) NOT NULL,
+	[SubDistrictsName] [nvarchar](max) NOT NULL,
+	[DistrictId] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.SubDistricts] PRIMARY KEY CLUSTERED 
+(
+	[SubDistrictsId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET IDENTITY_INSERT [dbo].[Districts] ON 
+
+
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (515, N'Ariyalur', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (516, N'Chennai', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (517, N'Coimbatore', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (518, N'Cuddalore', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (519, N'Dharmapuri', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (520, N'Dindigul', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (521, N'Erode', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (522, N'Kanchipuram', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (523, N'Kanyakumari', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (524, N'Karur', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (525, N'Krishnagiri', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (526, N'Madurai', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (527, N'Nagapattinam', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (528, N'Namakkal', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (529, N'Nilgiris', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (530, N'Perambalur', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (531, N'Pudukkottai', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (532, N'Ramanathapuram', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (533, N'Salem', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (534, N'Sivaganga', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (535, N'Thanjavur', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (536, N'Theni', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (537, N'Thoothukudi (Tuticorin)', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (538, N'Tiruchirappalli', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (539, N'Tirunelveli', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (540, N'Tiruppur', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (541, N'Tiruvallur', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (542, N'Tiruvannamalai', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (543, N'Tiruvarur', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (544, N'Vellore', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (545, N'Viluppuram', 31)
+GO
+INSERT [dbo].[Districts] ([DistrictId], [DistrictName], [StateId]) VALUES (546, N'Virudhunagar', 31)
+
+GO
+SET IDENTITY_INSERT [dbo].[Districts] OFF
+GO
+SET IDENTITY_INSERT [dbo].[SubDistricts] ON 
+
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5432, N'Udayarpalayam', 515)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5433, N'Ariyalur', 515)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5434, N'Sendurai', 515)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5435, N'Chennai', 516)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5436, N'Coimbatore South', 517)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5437, N'Coimbatore North', 517)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5438, N'Pollachi', 517)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5439, N'Sulur', 517)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5440, N'Mettupalayam', 517)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5441, N'Valparai', 517)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5442, N'Chidambaram', 518)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5443, N'Virudhachalam', 518)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5444, N'Cuddalore', 518)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5445, N'Panruti', 518)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5446, N'Kurinjipadi', 518)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5447, N'Kattumannarkoil', 518)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5448, N'Tittakudi', 518)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5449, N'Dharmapuri', 519)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5450, N'Palakkodu', 519)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5451, N'Pappireddipatti', 519)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5452, N'Harur', 519)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5453, N'Pennagaram', 519)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5454, N'Dindigul', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5455, N'Vedasandur', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5456, N'Palani', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5457, N'Nilakkottai', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5458, N'Oddanchatram', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5459, N'Attur', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5460, N'Natham', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5461, N'Kodaikanal', 520)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5462, N'Erode', 521)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5463, N'Bhavani', 521)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5464, N'Gobichettipalayam', 521)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5465, N'Sathyamangalam', 521)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5466, N'Perundurai', 521)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5467, N'Alandur', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5468, N'Chengalpattu', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5469, N'Sholinganallur', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5470, N'Sriperumbudur', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5471, N'Kanchipuram', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5472, N'Tambaram', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5473, N'Maduranthakam', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5474, N'Cheyyur', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5475, N'Tirukalukundram', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5476, N'Uthiramerur', 522)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5477, N'Kalkulam', 523)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5478, N'Vilavancode', 523)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5479, N'Agastheeswaram', 523)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5480, N'Thovala', 523)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5481, N'Karur', 524)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5482, N'Kulithalai', 524)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5483, N'Aravakurichi', 524)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5484, N'Krishnarayapuram', 524)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5485, N'Kadavur', 524)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5486, N'Krishnagiri', 525)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5487, N'Hosur', 525)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5488, N'Denkanikottai', 525)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5489, N'Uthangarai', 525)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5490, N'Pochampalli', 525)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5491, N'Madurai South', 526)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5492, N'Madurai North', 526)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5493, N'Melur', 526)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5494, N'Vadipatti', 526)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5495, N'Thirumangalam', 526)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5496, N'Peraiyur', 526)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5497, N'Usilampatti', 526)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5498, N'Sirkali', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5499, N'Nagapattinam', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5500, N'Mayiladuthurai', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5501, N'Vedaranyam', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5502, N'Tharangambadi', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5503, N'Kilvelur', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5504, N'Kuthalam', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5505, N'Thirukkuvalai', 527)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5506, N'Tiruchengode', 528)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5507, N'Namakkal', 528)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5508, N'Rasipuram', 528)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5509, N'Paramathi-Velur', 528)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5510, N'Udhagamandalam', 529)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5511, N'Coonoor', 529)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5512, N'Panthalur', 529)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5513, N'Kotagiri', 529)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5514, N'Gudalur', 529)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5515, N'Kundah', 529)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5516, N'Kunnam', 530)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5517, N'Perambalur', 530)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5518, N'Veppanthattai', 530)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5519, N'Pudukkottai', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5520, N'Iluppur', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5521, N'Aranthangi', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5522, N'Alangudi', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5523, N'Kulathur', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5524, N'Thirumayam', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5525, N'Karambakudi', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5526, N'Ponnamaravathi', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5527, N'Gandarvakkottai', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5528, N'Avudayarkoil', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5529, N'Manamelkudi', 531)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5530, N'Ramanathapuram', 532)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5531, N'Paramakudi', 532)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5532, N'Tiruvadanai', 532)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5533, N'Kadaladi', 532)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5534, N'Kamuthi', 532)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5535, N'Mudukulathur', 532)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5536, N'Rameswaram', 532)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5537, N'Salem', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5538, N'Omalur', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5539, N'Attur', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5540, N'Mettur', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5541, N'Sankari', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5542, N'Edappadi', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5543, N'Vazhapadi', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5544, N'Gangavalli', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5545, N'Yercaud', 533)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5546, N'Karaikkudi', 534)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5547, N'Sivaganga', 534)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5548, N'Tirupathur', 534)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5549, N'Manamadurai', 534)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5550, N'Devakottai', 534)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5551, N'Ilayangudi', 534)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5552, N'Thanjavur', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5553, N'Kumbakonam', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5554, N'Pattukkottai', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5555, N'Papanasam', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5556, N'Orathanadu', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5557, N'Thiruvidaimarudur', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5558, N'Thiruvaiyaru', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5559, N'Peravurani', 535)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5560, N'Uthamapalayam', 536)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5561, N'Periyakulam', 536)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5562, N'Andipatti', 536)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5563, N'Theni', 536)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5564, N'Bodinayakanur', 536)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5565, N'Thoothukkudi', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5566, N'Kovilpatti', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5567, N'Tiruchendur', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5568, N'Srivaikuntam', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5569, N'Vilathikulam', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5570, N'Ottapidaram', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5571, N'Sathankulam', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5572, N'Ettayapuram', 537)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5573, N'Tiruchirappalli', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5574, N'Manapparai', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5575, N'Lalgudi', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5576, N'Thuraiyur', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5577, N'Musiri', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5578, N'Thiruverumbur', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5579, N'Srirangam', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5580, N'Manachanallur', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5581, N'Thottiyam', 538)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5582, N'Tirunelveli', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5583, N'Ambasamudram', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5584, N'Tenkasi', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5585, N'Sankarankoil', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5586, N'Radhapuram', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5587, N'Nanguneri', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5588, N'Sivagiri', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5589, N'Alangulam', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5590, N'Shenkottai', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5591, N'Veerakeralamputhur', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5592, N'Palayamkottai', 539)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5593, N'Tiruppur', 540)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5594, N'Avanashi', 540)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5595, N'Dharapuram', 540)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5596, N'Palladam', 540)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5597, N'Udumalaipettai', 540)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5598, N'Kangeyam', 540)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5599, N'Madathukulam', 540)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5600, N'Ambattur', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5601, N'Poonamallee', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5602, N'Mathavaram', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5603, N'Tiruvallur', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5604, N'Ponneri', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5605, N'Pallipattu', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5606, N'Tiruttani', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5607, N'Gummidipoondi', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5608, N'Uthukkottai', 541)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5609, N'Tiruvannamalai', 542)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5610, N'Polur', 542)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5611, N'Cheyyar', 542)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5612, N'Vandavasi', 542)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5613, N'Arani', 542)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5614, N'Chengam', 542)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5615, N'Thandrampet', 542)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5616, N'Mannargudi', 543)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5617, N'Thiruthuraipoondi', 543)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5618, N'Kodavasal', 543)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5619, N'Tiruvarur', 543)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5620, N'Needamangalam', 543)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5621, N'Nannilam', 543)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5622, N'Valangaiman', 543)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5623, N'Vellore', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5624, N'Tirupathur', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5625, N'Arakonam', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5626, N'Wallajah', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5627, N'Gudiyatham', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5628, N'Katpadi', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5629, N'Vaniyambadi', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5630, N'Ambur', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5631, N'Arcot', 544)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5632, N'Viluppuram', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5633, N'Kallakkurichi', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5634, N'Tindivanam', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5635, N'Tirukkoyilur', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5636, N'Gingee', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5637, N'Sankarapuram', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5638, N'Ulundurpettai', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5639, N'Vanur', 545)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5640, N'Sivakasi', 546)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5641, N'Rajapalayam', 546)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5642, N'Srivilliputhur', 546)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5643, N'Virudhunagar', 546)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5644, N'Aruppukkottai', 546)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5645, N'Sattur', 546)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5646, N'Kariapatti', 546)
+GO
+INSERT [dbo].[SubDistricts] ([SubDistrictsId], [SubDistrictsName], [DistrictId]) VALUES (5647, N'Tiruchuli', 546)
+
