@@ -7,6 +7,8 @@ namespace CFSIS.Shared.Models
     public partial class CFSISContext : DbContext
     {
         public virtual DbSet<Course> Course { get; set; }
+        public virtual DbSet<Districts> Districts { get; set; }
+        public virtual DbSet<SubDistricts> SubDistricts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,6 +28,16 @@ namespace CFSIS.Shared.Models
                     .HasMaxLength(256);
 
                 entity.Property(e => e.CourseTitle).HasMaxLength(256);
+            });
+
+            modelBuilder.Entity<Districts>(entity =>
+            {
+                entity.HasKey(e => e.DistrictId);
+            });
+
+            modelBuilder.Entity<SubDistricts>(entity =>
+            {
+                entity.Property(e => e.SubDistrictsName).IsRequired();
             });
         }
     }
