@@ -27,7 +27,7 @@ namespace CFSIS.Server.Controllers
             return _context.SubDistricts;
         }
 
-        /* GET: api/SubDistricts/5
+        // GET: api/SubDistricts/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSubDistricts([FromRoute] int id)
         {
@@ -36,40 +36,31 @@ namespace CFSIS.Server.Controllers
                 return BadRequest(ModelState);
             }
 
-            var subDistricts = await _context.SubDistricts.SingleOrDefaultAsync(m => m.SubDistrictsId == id);
+            var subdistricts = await _context.SubDistricts.SingleOrDefaultAsync(m => m.SubDistrictsId == id);
 
-            if (subDistricts == null)
+            if (subdistricts == null)
             {
                 return NotFound();
             }
 
-            return Ok(subDistricts);
-        }*/
-
-        // GET: api/OrderDetails/5
-        [HttpGet("{id}")]
-        public IEnumerable<SubDistricts> GetSubDistricts([FromRoute] int id)
-        {
-            var subDistricts = _context.SubDistricts.Where(i => i.SubDistrictsId == id).ToList();
-            return subDistricts;
-
+            return Ok(subdistricts);
         }
 
         // PUT: api/SubDistricts/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSubDistricts([FromRoute] int id, [FromBody] SubDistricts subDistricts)
+        public async Task<IActionResult> PutSubDistricts([FromRoute] int id, [FromBody] SubDistricts subdistricts)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != subDistricts.SubDistrictsId)
+            if (id != subdistricts.SubDistrictsId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(subDistricts).State = EntityState.Modified;
+            _context.Entry(subdistricts).State = EntityState.Modified;
 
             try
             {
@@ -92,17 +83,17 @@ namespace CFSIS.Server.Controllers
 
         // POST: api/SubDistricts
         [HttpPost]
-        public async Task<IActionResult> PostSubDistricts([FromBody] SubDistricts subDistricts)
+        public async Task<IActionResult> PostSubDistricts([FromBody] SubDistricts subdistricts)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.SubDistricts.Add(subDistricts);
+            _context.SubDistricts.Add(subdistricts);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSubDistricts", new { id = subDistricts.SubDistrictsId }, subDistricts);
+            return CreatedAtAction("GetSubDistricts", new { id = subdistricts.SubDistrictsId }, subdistricts);
         }
 
         // DELETE: api/SubDistricts/5
@@ -114,16 +105,16 @@ namespace CFSIS.Server.Controllers
                 return BadRequest(ModelState);
             }
 
-            var subDistricts = await _context.SubDistricts.SingleOrDefaultAsync(m => m.SubDistrictsId == id);
-            if (subDistricts == null)
+            var subdistricts = await _context.SubDistricts.SingleOrDefaultAsync(m => m.SubDistrictsId == id);
+            if (subdistricts == null)
             {
                 return NotFound();
             }
 
-            _context.SubDistricts.Remove(subDistricts);
+            _context.SubDistricts.Remove(subdistricts);
             await _context.SaveChangesAsync();
 
-            return Ok(subDistricts);
+            return Ok(subdistricts);
         }
 
         private bool SubDistrictsExists(int id)

@@ -25,7 +25,6 @@
   <ItemGroup>
     <None Include="Pages\CourseData.cshtml" />
     <None Include="Pages\DistrictsData.cshtml" />
-    <None Include="Pages\DistrictsDataView.cshtml" />
     <None Include="Pages\EmployeeData.cshtml" />
   </ItemGroup>
 
@@ -39,10 +38,6 @@
 
   <ItemGroup>
     <Content Remove="Pages\CourseData.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <BlazorGenerate Remove="Pages\DistrictsDataView.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

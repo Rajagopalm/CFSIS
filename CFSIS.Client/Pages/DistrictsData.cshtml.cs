@@ -22,31 +22,37 @@ namespace CFSIS.Client.Pages
         [Parameter]
         protected string action { get; set; }
 
-        Districts[] districts;
-        SubDistricts[] subDistricts;
+        protected Districts[] districtsList;
+        protected SubDistricts[] subDistrictsList;
 
-        protected List<Districts> districtsList = new List<Districts>();
-        Districts dstM = new Districts();
-        SubDistricts subdstD = new SubDistricts();
+        //protected List<Districts> districtsList = new List<Districts>();
+        //protected List<SubDistricts> subDistrictsList = new List<SubDistricts>();
+        protected Districts dstM = new Districts();
+        protected SubDistricts subdstD = new SubDistricts();
 
-        Boolean showAddMaster = false;
-        Boolean showAddDetail = false;
+        protected Boolean showAddMaster = false;
+        protected Boolean showAddDetail = false;
 
-        int showDetailStatus = 0;
-        int sortStatus = 0;
-        int districtsIDs = 0;
-        string Imagename = "Images/toggle.png";
-        string ImageSortname = "Images/sortAsc.png";
+        protected int showDetailStatus = 0;
+        protected int sortStatus = 0;
+        protected int districtsIDs = 0;
+        protected string Imagename = "Images/toggle.png";
+        protected string ImageSortname = "Images/sortAsc.png";
 
-        string Messages = "";
+        protected string Messages = "";
+        protected string title { get; set; }
 
         protected override async Task OnInitAsync()
         {
-            districtsList = await Http.GetJsonAsync<List<Districts>>("api/Districts/Index");
-            //districts = await Http.GetJsonAsync<Districts[]>("/api/Districts/Index");
-            subdstD = new SubDistricts();
+            //districtsList = await Http.GetJsonAsync<List<Districts>>("api/Districts/Index");
+            districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/Index");
             dstM = new Districts();
+            subdstD = new SubDistricts();
             Messages = "";
+        }
+
+        public void OnGet()
+        {
         }
 
         protected override async Task OnParametersSetAsync()
@@ -58,7 +64,7 @@ namespace CFSIS.Client.Pages
             }
             else if (action == "create")
             {
-                Messages = "Add Course";
+                Messages = "Add Districts";
                 dstM = new Districts();
             }
             else if (paramDistrictID != "0")
@@ -76,19 +82,15 @@ namespace CFSIS.Client.Pages
             }
         }
 
-        public void OnGet()
-        {
-        }
-
         protected async Task FetchDistricts()
         {
             Messages = "Fetch Districts Data";
-            districtsList = await Http.GetJsonAsync<List<Districts>>("api/Districts/Index");
+            districtsList = await Http.GetJsonAsync<Districts[]>("api/Districts/Index");
         }
 
         //to Add New Districts
 
-        void AddNewDistricts()
+        protected async void AddNewDistricts()
         {
 
             dstM = new Districts();
@@ -101,6 +103,7 @@ namespace CFSIS.Client.Pages
 
         protected async Task SaveDistricts()
         {
+            
             if (dstM.DistrictId == 0)
 
             {
@@ -111,56 +114,69 @@ namespace CFSIS.Client.Pages
                 //await Http.SendJsonAsync(HttpMethod.Put, "/api/Districts/" + dstM.DistrictId, dstM);
                 await Http.SendJsonAsync(HttpMethod.Put, "api/Districts/Edit", dstM);
             }
-            UriHelper.NavigateTo("/Districts/fetch");
-
-            dstM = new Districts();
-            districts = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
-
             Messages = "Districts Save to Database !";
             showAddMaster = false;
+            dstM = new Districts();
+            UriHelper.NavigateTo("/districts/fetch");
 
+            //districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
         }
 
-
-
-
         //Edit Districts
-
-
         protected async Task EditDistricts()
         {
             showAddMaster = true;
 
-            if (Districts.DistrictsIDs != 0)
+            if (dstM.DistrictId != 0)
             {
-                await Http.SendJsonAsync(HttpMethod.Put, "api/Districts/Edit", course);
+                await Http.SendJsonAsync(HttpMethod.Put, "api/Districts/Edit", dstM);
             }
             else
             {
-                await Http.SendJsonAsync(HttpMethod.Post, "/api/Districts/Create", course);
+                await Http.SendJsonAsync(HttpMethod.Post, "/api/Districts/Create", dstM);
             }
-            UriHelper.NavigateTo("/course/fetch");
+            UriHelper.NavigateTo("/districts/fetch");
+            // dstM = await Http.GetJsonAsync<Districts>("/api/Districts/" + Convert.ToInt32(DistrictsIDs));
+        }
 
+        protected async Task EditDistricts(int DistrictsIDs)
+        {
+            //showAddMaster = true;
+            //districtsList = await Http.GetJsonAsync<Districts>("/api/Districts/" + Convert.ToInt32(DistrictsIDs));
+            //districtsList = await Http.GetJsonAsync<Districts[]>("api/Districts/" + Convert.ToInt32(DistrictsIDs));
 
-# dstM = await Http.GetJsonAsync<Districts>("/api/Districts/" + Convert.ToInt32(DistrictsIDs));
+            showAddMaster = true;
+            if (DistrictsIDs != 0)
+            {
+                await Http.SendJsonAsync(HttpMethod.Put, "api/Districts/Edit", dstM);
+                Messages = "Districts Updated to Database !";
+                showAddMaster = false;
+                dstM = new Districts();
+                UriHelper.NavigateTo("/districts/fetch");
+            }
         }
 
         //Delete Districts
         protected async Task DeleteDistricts(int DistrictsIDs)
         {
             await Http.DeleteAsync("/api/Districts/Delete/" + Convert.ToInt32(DistrictsIDs));
-            UriHelper.NavigateTo("/course/fetch");
-
-            districts = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
             Messages = "Districts Deleted from Database !";
-            
+            UriHelper.NavigateTo("/districts/fetch");
+
+            //districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/");           
+        }
+
+        protected void Cancel()
+        {
+            title = "Districts Data";
+            UriHelper.NavigateTo("/districts/fetch");
         }
 
         //Sorting
-
         protected async Task StudentSorting(string SortColumn)
         {
-            districts = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
+            districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
+            //districtsList = await Http.GetJsonAsync<List<Districts>>("api/Districts/Index");
             Messages = "";
 
             if (sortStatus == 1)
@@ -171,10 +187,10 @@ namespace CFSIS.Client.Pages
                 switch (SortColumn)
                 {
                     case "DistrictId":
-                        districts = districts.OrderByDescending(x => x.DistrictId).ToArray();
+                        districtsList = districtsList.OrderBy(x => x.DistrictId).ToArray();
                         break;
                     case "DistrictName":
-                        districts = districts.OrderByDescending(x => x.DistrictName).ToArray();
+                        districtsList = districtsList.OrderBy(x => x.DistrictName).ToArray();
                         break;
                 }
             }
@@ -186,97 +202,78 @@ namespace CFSIS.Client.Pages
                 switch (SortColumn)
                 {
                     case "DistrictId":
-                        districts = districts.OrderByDescending(x => x.DistrictId).ToArray();
+                        districtsList = districtsList.OrderByDescending(x => x.DistrictId).ToArray();
                         break;
                     case "DistrictName":
-                        districts = districts.OrderByDescending(x => x.DistrictName).ToArray();
+                        districtsList = districtsList.OrderByDescending(x => x.DistrictName).ToArray();
                         break;
 
                 }
             }
         }
 
-
-
         // For Filtering by DistrictId
-        void OnDistrictIdChanged(UIChangeEventArgs args)
+        protected async Task OnDistrictIdChanged(UIChangeEventArgs args)
         {
             string values = args.Value.ToString();
-            studentFilteringList(values, "DistrictId");
+            await studentFilteringList(values, "DistrictId");
         }
 
-
         // For Filtering by DistrictName
-        void OnDistrictNameChanged(UIChangeEventArgs args)
+        protected async Task OnDistrictNameChanged(UIChangeEventArgs args)
         {
             string values = args.Value.ToString();
-            studentFilteringList(values, "DistrictName");
+            await studentFilteringList(values, "DistrictName");
         }
 
         // For Filtering by SubDistrictsId
-        void OnSubDistrictsIdChanged(UIChangeEventArgs args)
+        protected async Task OnSubDistrictsIdChanged(UIChangeEventArgs args)
         {
             string values = args.Value.ToString();
-            studentFilteringList(values, "SubDistrictsId");
+            await studentFilteringList(values, "SubDistrictsId");
         }
 
         // For Filtering by StateId
-        void OnSubDistrictNameChanged(UIChangeEventArgs args)
+        protected async Task OnSubDistrictNameChanged(UIChangeEventArgs args)
         {
             string values = args.Value.ToString();
-            studentFilteringList(values, "SubDistrictName");
+            await studentFilteringList(values, "SubDistrictName");
         }
 
-
-
-
-
-        //Filtering
+       //Filtering
         protected async Task studentFilteringList(String Value, string columnName)
         {
-            districts = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
-
+            districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
             Messages = "";
             if (Value.Trim().Length > 0)
             {
-
                 switch (columnName)
                 {
-
                     case "DistrictName":
-                        districts = districts.Where(x => x.DistrictName.Contains(Value)).ToArray();
+                        districtsList = districtsList.Where(x => x.DistrictName.Contains(Value)).ToArray();
                         break;
-
-
                 }
-
             }
             else
             {
-                districts = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
+                districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
             }
         }
 
 
         //--------------- Detail Grid CRUD
-
-
-
-        protected async Task getSubDistricts(int ordID)
+        protected async Task getSubDistricts(int dstID)
         {
             showAddMaster = false;
             showAddDetail = false;
             Messages = "";
-            if (districtsIDs != ordID)
+            if (districtsIDs != dstID)
             {
                 Imagename = "Images/expand.png";
                 showDetailStatus = 1;
-
             }
             else
             {
-
-
                 if (showDetailStatus == 0)
                 {
                     Imagename = "Images/expand.png";
@@ -289,21 +286,19 @@ namespace CFSIS.Client.Pages
                 }
 
             }
-            districtsIDs = ordID;
-            subDistricts = await Http.GetJsonAsync<SubDistricts[]>("/api/SubDistricts/" + Convert.ToInt32(ordID));
+            districtsIDs = dstID;
+            subDistrictsList = await Http.GetJsonAsync<SubDistricts[]>("/api/SubDistricts/" + Convert.ToInt32(dstID));
 
         }
         //to Add New SubDistricts
 
 
-        protected async Task AddNewSubDistricts(int districtsID)
+        protected void AddNewSubDistricts(int districtsID)
         {
             subdstD = new SubDistricts();
 
             subdstD.DistrictId = districtsID;
             Messages = "";
-
-
             showAddDetail = true;
             showAddMaster = false;
 
@@ -314,33 +309,27 @@ namespace CFSIS.Client.Pages
         protected async Task SaveSubDistricts()
         {
             if (subdstD.SubDistrictsId == 0)
-
             {
-                await Http.SendJsonAsync(HttpMethod.Post, "/api/SubDistricts/", subdstD);
-
+                //await Http.SendJsonAsync(HttpMethod.Post, "/api/SubDistricts/", subdstD);
+                await Http.SendJsonAsync(HttpMethod.Post, "/api/SubDistricts/Create", subdstD);
             }
             else
             {
-                await Http.SendJsonAsync(HttpMethod.Put, "/api/SubDistricts/" + subdstD.SubDistrictsId, subdstD);
+                //await Http.SendJsonAsync(HttpMethod.Put, "/api/SubDistricts/" + subdstD.SubDistrictsId, subdstD);
+                await Http.SendJsonAsync(HttpMethod.Put, "api/SubDistricts/Edit", dstM);
             }
-
-            subDistricts = await Http.GetJsonAsync<SubDistricts[]>("/api/SubDistricts/" + Convert.ToInt32(subdstD.DistrictId));
-            subdstD = new SubDistricts();
+            Messages = "SubDistricts Saved to Databse !";
             showAddDetail = false;
             showAddMaster = false;
-            Messages = "SubDistricts Saved to Databse !";
+            subdstD = new SubDistricts();
+            //UriHelper.NavigateTo("/SubDistricts/fetch");
+            subDistrictsList = await Http.GetJsonAsync<SubDistricts[]>("/api/SubDistricts/" + Convert.ToInt32(subdstD.DistrictId));
         }
 
-
-
-
-        //Edit Districts
-
-
+        //Edit Sub Districts
         protected async Task EditSubDistricts(int SubDistrictsIDs)
         {
-
-            subdstD = await Http.GetJsonAsync<SubDistricts>("/api/SubDistricts1/" + Convert.ToInt32(SubDistrictsIDs));
+            subdstD = await Http.GetJsonAsync<SubDistricts>("/api/SubDistricts/" + Convert.ToInt32(SubDistrictsIDs));
             showAddDetail = true;
             showAddMaster = false;
         }
@@ -349,18 +338,14 @@ namespace CFSIS.Client.Pages
         protected async Task DeleteSubDistricts(int SubDistrictsIDs)
         {
             var districtsValue = subdstD.DistrictId;
-            // ids = studentID.ToString();
             await Http.DeleteAsync("/api/SubDistricts/" + Convert.ToInt32(SubDistrictsIDs));
-
-            // await Http.DeleteAsync("/api/StudentMasters/Delete/" + Convert.ToInt32(studentID));
-
-            subDistricts = await Http.GetJsonAsync<SubDistricts[]>("/api/SubDistricts/" + Convert.ToInt32(districtsValue));
+            subDistrictsList = await Http.GetJsonAsync<SubDistricts[]>("/api/SubDistricts/" + Convert.ToInt32(districtsValue));
             Imagename = "Images/toggle.png";
             showDetailStatus = 0;
             Messages = "SubDistricts Deleted from Database !";
         }
 
-        void closeMessage()
+        protected void closeMessage()
         {
             Messages = "";
         }

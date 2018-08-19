@@ -9,7 +9,7 @@
 {
 <div id="outPopUp" style="position: absolute;  width: 312px;  height: 252px;  z-index: 15;  top: 50%;  left: 50%;  margin: -100px 0 0 -150px;  background: #f6cd2f;">
     <div id="outPopUp" style="position: absolute;  width: 300px;  height: 248px;    background: #360849;">
-        <img src="Images/C2.png" onclick="@closeMessage" />
+        <img src="Images/C2.png" onclick="@closeMessage()" />
         <span style="color:#ECF3F4;font-size:xx-large;display: inline-block;    margin: 10px 10px 0 0;   padding: 5px 10px ">
             @Messages
         </span>
@@ -39,7 +39,7 @@
         </td>
         <td>&nbsp;</td>
         <td align="right">
-            <button class="btn btn-info" onclick="@AddNewDistricts">Add New Order</button>
+            <button class="btn btn-info" onclick="@AddNewDistricts">Add New District</button>
         </td>
         <td width="10">&nbsp;</td>
     </tr>
@@ -236,7 +236,7 @@ else
         </td>
 
     </tr>
-    @if (subDistricts != null)
+    @if (subDistrictsList != null)
             {
     @if (showDetailStatus == 1)
                 {
@@ -244,7 +244,7 @@ else
                     {
     <tr style="background-color:#6D7B8D ; color:honeydew ;border-style:dashed;border-width:2px;border-color:#ECF3F4;">
         <td colspan="8" align="center">
-            Sub District of  District - <strong> @Districtsobj.DistrictId </strong> ,Total @subDistricts.Length  details for this District
+            Sub District of  District - <strong> @Districtsobj.DistrictId </strong> ,Total @subDistrictsList.Length  details for this District
         </td>
     </tr>
     <tr>
@@ -269,7 +269,7 @@ else
                     </td>
 
                 </tr>
-                @foreach (var subDistrictsObj in subDistricts)
+                @foreach (var subDistrictsObj in subDistrictsList)
                                     {
                 <tr>
                     <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
