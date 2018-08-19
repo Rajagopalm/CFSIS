@@ -2,20 +2,22 @@
 @page "/districts/{action}"
 
 @inherits DistrictsDataModel
+
+
 <h1>@title</h1>
 
 
 @if (Messages != "")
 {
-<div id="outPopUp" style="position: absolute;  width: 312px;  height: 252px;  z-index: 15;  top: 50%;  left: 50%;  margin: -100px 0 0 -150px;  background: #f6cd2f;">
-    <div id="outPopUp" style="position: absolute;  width: 300px;  height: 248px;    background: #360849;">
-        <img src="Images/C2.png" onclick="@closeMessage()" />
-        <span style="color:#ECF3F4;font-size:xx-large;display: inline-block;    margin: 10px 10px 0 0;   padding: 5px 10px ">
-            @Messages
-        </span>
-    </div>
+    <div id="outPopUp" style="position: absolute;  width: 312px;  height: 252px;  z-index: 15;  top: 50%;  left: 50%;  margin: -100px 0 0 -150px;  background: #f6cd2f;">
+        <div id="outPopUp" style="position: absolute;  width: 300px;  height: 248px;    background: #360849;">
+            <img src="Images/C2.png"  />
+            <span style="color:#ECF3F4;font-size:xx-large;display: inline-block;    margin: 10px 10px 0 0;   padding: 5px 10px ">
+                @Messages
+            </span>
+        </div>
 
-</div>
+    </div>
 }
 
 
@@ -50,110 +52,110 @@
 
 @if (showAddMaster == true)
 {
-<table style=" background-color:#FFFFFF; border: dashed 3px #6D7B8D; padding: 5px;width: 99%;table-layout:fixed;" cellpadding="2" cellspacing="2">
-    <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
-        <td>
-            <h3> Add/Edit Districts</h3>
-        </td>
+    <table style=" background-color:#FFFFFF; border: dashed 3px #6D7B8D; padding: 5px;width: 99%;table-layout:fixed;" cellpadding="2" cellspacing="2">
+        <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
+            <td>
+                <h3> Add/Edit Districts</h3>
+            </td>
 
-    </tr>
-    <tr>
-        <td>
-            <table class="form-group">
-                <tr>
-                    <td>
-                        <label for="DistrictId" class="control-label">District Id</label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" bind="@dstM.DistrictId" readonly />
-                    </td>
-                    <td width="20">&nbsp;</td>
-                    <td>
-                        <label for="Name" class="control-label">District Name</label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" bind="@dstM.DistrictName" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="State" class="control-label">State Id</label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" bind="@dstM.StateId" />
-                    </td>
-                    <td width="20">&nbsp;</td>
-                    <td></td>
-                    <td>
-                        <button type="submit" class="btn btn-success" onclick="@(async () => await SaveDistricts())" style="width:220px;">Save</button>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+        </tr>
+        <tr>
+            <td>
+                <table class="form-group">
+                    <tr>
+                        <td>
+                            <label for="DistrictId" class="control-label">District Id</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" bind="@dstM.DistrictId" readonly />
+                        </td>
+                        <td width="20">&nbsp;</td>
+                        <td>
+                            <label for="Name" class="control-label">District Name</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" bind="@dstM.DistrictName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="State" class="control-label">State Id</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" bind="@dstM.StateId" />
+                        </td>
+                        <td width="20">&nbsp;</td>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-success" onclick="@(async () => await SaveDistricts())" style="width:220px;">Save</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 }
 
 @if (showAddDetail == true)
 {
-<table style=" background-color:#FFFFFF; border: dashed 3px #6D7B8D; padding: 5px;width: 99%;table-layout:fixed;" cellpadding="2" cellspacing="2">
-    <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
-        <td>
-            <h3> Add/Edit Sub Districts</h3>
-        </td>
+    <table style=" background-color:#FFFFFF; border: dashed 3px #6D7B8D; padding: 5px;width: 99%;table-layout:fixed;" cellpadding="2" cellspacing="2">
+        <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
+            <td>
+                <h3> Add/Edit Sub Districts</h3>
+            </td>
 
-    </tr>
-    <tr>
-        <td>
-            <table class="form-group">
-                <tr>
-                    <td>
-                        <label for="SubDistrictsId" class="control-label">SubDistricts No</label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" bind="@subdstD.SubDistrictsId" readonly />
-                    </td>
-                    <td width="20">&nbsp;</td>
-                    <td>
-                        <label for="DistrictId" class="control-label">District</label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" bind="@subdstD.DistrictId" readonly />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="SubDistrictsName" class="control-label">SubDistricts Name</label>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" bind="@subdstD.SubDistrictsName" />
-                    </td>
-                    <td width="20">&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="4" align="center">
-                        <button type="submit" class="btn btn-success" onclick="@(async () => await SaveSubDistricts())" style="width:220px;">Save</button>
-                    </td>
-                    <td colspan="2"></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+        </tr>
+        <tr>
+            <td>
+                <table class="form-group">
+                    <tr>
+                        <td>
+                            <label for="SubDistrictsId" class="control-label">SubDistricts No</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" bind="@subdstD.SubDistrictsId" readonly />
+                        </td>
+                        <td width="20">&nbsp;</td>
+                        <td>
+                            <label for="DistrictId" class="control-label">District</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" bind="@subdstD.DistrictId" readonly />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="SubDistrictsName" class="control-label">SubDistricts Name</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" bind="@subdstD.SubDistrictsName" />
+                        </td>
+                        <td width="20">&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="center">
+                            <button type="submit" class="btn btn-success" onclick="@(async () => await SaveSubDistricts())" style="width:220px;">Save</button>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 }
 
 <img src="~/Images/blank.gif" alt="" width="1" height="2" />
 <hr />
 @if (districtsList == null)
 {
-<p><em>Loading...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
 
-<table style=" background-color:#FFFFFF; border: solid 2px #6D7B8D; padding: 5px;width: 99%;table-layout:fixed;" cellpadding="2" cellspacing="2">
+    <table style=" background-color:#FFFFFF; border: solid 2px #6D7B8D; padding: 5px;width: 99%;table-layout:fixed;" cellpadding="2" cellspacing="2">
 
         <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
             <td width="120"></td>
@@ -199,14 +201,14 @@ else
                 <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
 
                     @if (@Districtsobj.DistrictId == districtsIDs)
-                            {
-                    <img src="@Imagename" onclick="@(async () => await getSubDistricts(@Districtsobj.DistrictId))" />
-                            }
-                            else
-                            {
-                    <img src="Images/toggle.png" onclick="@(async () => await getSubDistricts(@Districtsobj.DistrictId))" />
+                    {
+                        <img src="@Imagename" onclick="@(async () => await getSubDistricts(@Districtsobj.DistrictId))" />
+                    }
+                    else
+                    {
+                        <img src="Images/toggle.png" onclick="@(async () => await getSubDistricts(@Districtsobj.DistrictId))" />
 
-                            }
+                    }
 
                 </td>
                 <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
@@ -242,74 +244,74 @@ else
                 {
                     @if (@Districtsobj.DistrictId == districtsIDs)
                     {
-                    <tr style="background-color:#6D7B8D ; color:honeydew ;border-style:dashed;border-width:2px;border-color:#ECF3F4;">
-                        <td colspan="8" align="center">
-                            Sub District of  District - <strong> @Districtsobj.DistrictId </strong> ,Total @subDistrictsList.Length  details for this District
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="top">
-                            <button class="btn btn-info" onclick="@(async () => await AddNewSubDistricts(@Districtsobj.DistrictId))">Add New Detail</button>
-                        </td>
-                        <td colspan="7">
+                        <tr style="background-color:#6D7B8D ; color:honeydew ;border-style:dashed;border-width:2px;border-color:#ECF3F4;">
+                            <td colspan="8" align="center">
+                                Sub District of  District - <strong> @Districtsobj.DistrictId </strong> ,Total @subDistrictsList.Length  details for this District
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <button class="btn btn-info" onclick="">Add New SubDistricts</button>
+                            </td>
+                            <td colspan="7">
 
-                            <table style="background-color:#ECF3F4; border: solid 2px #3273d5; padding: 5px;width: 99%;table-layout:fixed;">
+                                <table style="background-color:#ECF3F4; border: solid 2px #3273d5; padding: 5px;width: 99%;table-layout:fixed;">
 
-                                <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;">
-                                    <td width="40" align="center"><b>Edit</b></td>
-                                    <td width="40" align="center"><b>Delete</b></td>
-                                    <td width="240" align="center">
-                                        <b> Districts Number</b>
-                                    </td>
-                                    <td width="240" align="center">
-                                        <b>  SubDistricts Number</b>
-                                    </td>
-                                    <td width="120" align="center">
-                                        <b> SubDistricts Name</b>
-                                    </td>
+                                    <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;">
+                                        <td width="40" align="center"><b>Edit</b></td>
+                                        <td width="40" align="center"><b>Delete</b></td>
+                                        <td width="240" align="center">
+                                            <b> Districts Number</b>
+                                        </td>
+                                        <td width="240" align="center">
+                                            <b>  SubDistricts Number</b>
+                                        </td>
+                                        <td width="120" align="center">
+                                            <b> SubDistricts Name</b>
+                                        </td>
 
-                                </tr>
-                                @foreach (var subDistrictsObj in subDistrictsList)
-                                {
-                                <tr>
-                                    <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
-                                        <span style="color:#9F000F">
-                                            <img src="Images/edit.gif" alt="Edit" width="24px" height="24px" onclick="@(async () => await EditSubDistricts(@subDistrictsObj.SubDistrictsId))" />
-                                        </span>
-                                    </td>
-                                    <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
-                                        <span style="color:#9F000F">
-                                            <img src="Images/delete.gif" alt="Delete" width="24px" height="24px" onclick="@(async () => await DeleteSubDistricts(@subDistrictsObj.SubDistrictsId))" />
-                                        </span>
-                                    </td>
-                                    <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
-                                        @subDistrictsObj.DistrictId
-                                    </td>
-                                    <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                                    </tr>
+                                    @foreach (var subDistrictsObj in subDistrictsList)
+                                    {
+                                        <tr>
+                                            <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                                                <span style="color:#9F000F">
+                                                    <img src="Images/edit.gif" alt="Edit" width="24px" height="24px" onclick="@(async () => await EditSubDistricts(@subDistrictsObj.SubDistrictsId))" />
+                                                </span>
+                                            </td>
+                                            <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                                                <span style="color:#9F000F">
+                                                    <img src="Images/delete.gif" alt="Delete" width="24px" height="24px" onclick="@(async () => await DeleteSubDistricts(@subDistrictsObj.SubDistrictsId))" />
+                                                </span>
+                                            </td>
+                                            <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                                                @subDistrictsObj.DistrictId
+                                            </td>
+                                            <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
 
-                                        <span style="color:#9F000F">
-                                            @subDistrictsObj.SubDistrictsId
-                                        </span>
-                                    </td>
-                                    <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
-                                        <span style="color:#9F000F">
-                                            @subDistrictsObj.SubDistrictsName
-                                        </span>
-                                    </td>
+                                                <span style="color:#9F000F">
+                                                    @subDistrictsObj.SubDistrictsId
+                                                </span>
+                                            </td>
+                                            <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                                                <span style="color:#9F000F">
+                                                    @subDistrictsObj.SubDistrictsName
+                                                </span>
+                                            </td>
 
-                                </tr>
-                                }
+                                        </tr>
+                                    }
 
-                            </table>
+                                </table>
 
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     }
                 }
             }
         }
-</table>
+    </table>
 }
 
 

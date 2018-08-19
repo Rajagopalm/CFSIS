@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using System.Linq;
 using System.Net.Mime;
+using CFSIS.Shared.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace CFSIS.Server
 {
@@ -31,6 +34,8 @@ namespace CFSIS.Server
                     WasmMediaTypeNames.Application.Wasm,
                 });
             });
+            var connectionString = "Server = (local); Database = CFSIS; user id = sa; password = P@ssw0rd; Trusted_Connection = True; MultipleActiveResultSets = true";
+            services.AddDbContext<CFSISContext>(options => options.UseSqlServer(@"Server= (local);Database=CFSIS;user id= sa;password=P@ssw0rd;Trusted_Connection=True;MultipleActiveResultSets=true"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

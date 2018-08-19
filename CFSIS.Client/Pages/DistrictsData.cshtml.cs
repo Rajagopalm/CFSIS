@@ -83,13 +83,13 @@ namespace CFSIS.Client.Pages
 
         protected async Task FetchDistricts()
         {
-            Messages = "Fetch Districts Data";
+            Messages = "Fetch Districts Details from the DB";
             districtsList = await Http.GetJsonAsync<Districts[]>("api/Districts/Index");
         }
 
         //to Add New Districts
 
-        protected async void AddNewDistricts()
+        protected void AddNewDistricts()
         {
 
             dstM = new Districts();
