@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -126,7 +125,6 @@ namespace CFSIS.Client.Pages
         protected async Task EditDistricts()
         {
             showAddMaster = true;
-
             if (dstM.DistrictId != 0)
             {
                 await Http.SendJsonAsync(HttpMethod.Put, "api/Districts/Edit", dstM);
@@ -173,7 +171,7 @@ namespace CFSIS.Client.Pages
         }
 
         //Sorting
-        protected async Task StudentSorting(string SortColumn)
+        protected async Task DistrictSorting(string SortColumn)
         {
             districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/");
             //districtsList = await Http.GetJsonAsync<List<Districts>>("api/Districts/Index");
