@@ -48,4 +48,8 @@
     <Content Remove="Pages\DistrictsData.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <BlazorGenerate Remove="Pages\Orders.cshtml" />
+  </ItemGroup>
+
 </Project>
