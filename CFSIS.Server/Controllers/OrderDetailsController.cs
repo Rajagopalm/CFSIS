@@ -13,7 +13,13 @@ namespace CFSIS.Server.Controllers
     [Route("api/OrderDetails")]
     public class OrderDetailsController : Controller
     {
-        CFSISContext _context = new CFSISContext();
+        //CFSISContext _context = new CFSISContext();
+        private readonly CFSISContext _context;
+
+        public OrderDetailsController(CFSISContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/OrderDetails
         [HttpGet]

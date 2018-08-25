@@ -44,7 +44,7 @@ namespace CFSIS.Client.Pages
         protected override async Task OnInitAsync()
         {
             //districtsList = await Http.GetJsonAsync<List<Districts>>("api/Districts/Index");
-            districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts/Index");
+            districtsList = await Http.GetJsonAsync<Districts[]>("/api/Districts");
             dstM = new Districts();
             subdstD = new SubDistricts();
             Messages = "";
@@ -84,7 +84,7 @@ namespace CFSIS.Client.Pages
         protected async Task FetchDistricts()
         {
             Messages = "Fetch Districts Details from the DB";
-            districtsList = await Http.GetJsonAsync<Districts[]>("api/Districts/Index");
+            districtsList = await Http.GetJsonAsync<Districts[]>("api/Districts");
         }
 
         //to Add New Districts

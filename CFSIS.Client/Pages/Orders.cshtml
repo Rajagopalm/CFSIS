@@ -26,8 +26,7 @@
 <table width="99%" style=" border-bottom:3px solid #3273d5;">
     <tr>
         <td class="style1" align="center">
-            <h3>Shanu ASP.NET Core Blazor Master/Detail  CRUD using WEB API & EF :)</h3>
-            <h3>Master/Detail HTML Grid with Filter, Sorting and Detail Grid Grand Total Row</h3>
+            <h3>Master/Detail HTML Grid </h3>
         </td>
 
     </tr>
@@ -687,8 +686,8 @@ else
 
     protected async Task EditOrderDetails(int OrderDetailNos)
     {
-
-        ordsD = await Http.GetJsonAsync<OrderDetails>("/api/OrderDetails1/" + Convert.ToInt32(OrderDetailNos));
+        
+        ordsD = await Http.GetJsonAsync<OrderDetails>("/api/OrderDetails/" + Convert.ToInt32(OrderDetailNos));
         showAddDetail = true;
         showAddMaster = false;
     }
