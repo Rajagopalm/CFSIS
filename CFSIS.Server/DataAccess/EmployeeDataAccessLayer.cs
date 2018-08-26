@@ -9,7 +9,15 @@ namespace CFSIS.Server.DataAccess
 {
     public class EmployeeDataAccessLayer
     {
-        myTestDBContext db = new myTestDBContext();
+        CFSISContext db = new CFSISContext();
+
+        public EmployeeDataAccessLayer()
+        { }
+
+        public EmployeeDataAccessLayer(CFSISContext DBcontext)
+        {
+            db = DBcontext;
+        }
 
         //To Get all employees details   
         public IEnumerable<Employee> GetAllEmployees()

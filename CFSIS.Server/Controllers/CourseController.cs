@@ -12,7 +12,15 @@ namespace CFSIS.Server.Controllers
 {
     public class CourseController : Controller
     {
-        CourseDataAccessLayer objcourse = new CourseDataAccessLayer();
+        //CourseDataAccessLayer objcourse = new CourseDataAccessLayer();
+        CourseDataAccessLayer objcourse;
+        private readonly CFSISContext _context;
+
+        public CourseController(CFSISContext context)
+        {
+            _context = context;
+            objcourse = new CourseDataAccessLayer(_context);
+        }
 
         // To Fetch all course records
         [HttpGet]

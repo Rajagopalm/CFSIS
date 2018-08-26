@@ -10,36 +10,44 @@ using CFSIS.Shared.Models;
 namespace CFSIS.Server.Controllers
 {
     [Produces("application/json")]
-    [Route("api/OrderDetails")]
-    public class OrderDetailsController : Controller
+    [Route("api/OrderDetails1")]
+    public class OrderDetails1Controller : Controller
     {
         //CFSISContext _context = new CFSISContext();
         private readonly CFSISContext _context;
 
-        public OrderDetailsController(CFSISContext context)
+        public OrderDetails1Controller(CFSISContext context)
         {
             _context = context;
         }
 
-        // GET: api/OrderDetails
+        // GET: api/OrderDetails1
         [HttpGet]
         public IEnumerable<OrderDetails> GetOrderDetails()
         {
             return _context.OrderDetails;
         }
 
-
-
-        // GET: api/OrderDetails/5
+        // GET: api/OrderDetails1/5
         [HttpGet("{id}")]
-        public IEnumerable<OrderDetails> GetOrderDetails([FromRoute] int id)
+        public async Task<IActionResult> GetOrderDetails([FromRoute] int id)
         {
-            var orderDetails = _context.OrderDetails.Where(i => i.OrderNo == id).ToList();
-            return orderDetails;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var orderDetails = await _context.OrderDetails.SingleOrDefaultAsync(m => m.OrderDetailNo == id);
+
+            if (orderDetails == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(orderDetails);
         }
 
-        // PUT: api/OrderDetails/5
+        // PUT: api/OrderDetails1/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrderDetails([FromRoute] int id, [FromBody] OrderDetails orderDetails)
         {
@@ -74,7 +82,7 @@ namespace CFSIS.Server.Controllers
             return NoContent();
         }
 
-        // POST: api/OrderDetails
+        // POST: api/OrderDetails1
         [HttpPost]
         public async Task<IActionResult> PostOrderDetails([FromBody] OrderDetails orderDetails)
         {
@@ -89,7 +97,7 @@ namespace CFSIS.Server.Controllers
             return CreatedAtAction("GetOrderDetails", new { id = orderDetails.OrderDetailNo }, orderDetails);
         }
 
-        // DELETE: api/OrderDetails/5
+        // DELETE: api/OrderDetails1/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrderDetails([FromRoute] int id)
         {

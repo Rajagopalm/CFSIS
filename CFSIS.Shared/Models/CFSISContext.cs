@@ -6,6 +6,7 @@ namespace CFSIS.Shared.Models
 {
     public partial class CFSISContext : DbContext
     {
+        public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<Districts> Districts { get; set; }
         public virtual DbSet<SubDistricts> SubDistricts { get; set; }
@@ -32,6 +33,29 @@ namespace CFSIS.Shared.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.Property(e => e.City)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Department)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Gender)
+                    .IsRequired()
+                    .HasMaxLength(6)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<Course>(entity =>
             {
                 entity.Property(e => e.CourseCode)

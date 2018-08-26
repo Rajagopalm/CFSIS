@@ -9,7 +9,17 @@ namespace CFSIS.Server.DataAccess
 {
     public class CourseDataAccessLayer
     {
+        //CFSISContext db = new CFSISContext();
+
         CFSISContext db = new CFSISContext();
+
+        public CourseDataAccessLayer()
+        { }
+
+        public CourseDataAccessLayer(CFSISContext DBcontext)
+        {
+            db = DBcontext;
+        }
 
         //To Get all courses details   
         public IEnumerable<Course> GetAllCourses()

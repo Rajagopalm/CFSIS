@@ -12,7 +12,16 @@ namespace CFSIS.Server.Controllers
 {
     public class EmployeeController : Controller
     {
-        EmployeeDataAccessLayer objemployee = new EmployeeDataAccessLayer();
+        EmployeeDataAccessLayer objemployee;
+        private readonly CFSISContext _context;
+
+        public EmployeeController(CFSISContext context)
+        {
+            _context = context;
+            objemployee = new EmployeeDataAccessLayer(_context);
+        }
+
+
 
         // To Fetch all employee records
         [HttpGet]
