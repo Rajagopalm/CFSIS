@@ -9,9 +9,7 @@ namespace CFSIS.Server.DataAccess
 {
     public class CourseDataAccessLayer
     {
-        //CFSISContext db = new CFSISContext();
-
-        CFSISContext db = new CFSISContext();
+        private readonly CFSISContext db;
 
         public CourseDataAccessLayer()
         { }

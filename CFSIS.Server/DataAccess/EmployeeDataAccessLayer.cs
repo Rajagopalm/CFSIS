@@ -9,7 +9,7 @@ namespace CFSIS.Server.DataAccess
 {
     public class EmployeeDataAccessLayer
     {
-        CFSISContext db = new CFSISContext();
+        private readonly CFSISContext db;
 
         public EmployeeDataAccessLayer()
         { }
